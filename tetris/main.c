@@ -1,6 +1,7 @@
-#include <stdio.h>
+#include<stdio.h>
 
-typedef enum{
+typedef enum
+{
 	EMPTY = -1,
 	I,
 	J,
@@ -11,7 +12,8 @@ typedef enum{
 	Z
 }ShapeId;
 
-typedef enum {
+typedef enum
+{
 	RED = 41,
 	GREEN,
 	YELLOW,
@@ -22,7 +24,8 @@ typedef enum {
 	BLACK = 0,
 }Color;
 
-typedef struct {
+typedef struct
+{
 	ShapeId shape;
 	Color color;
 	int size;
@@ -59,16 +62,65 @@ Shape shape[7] = {
 				{0,1,0,0},
 				{0,1,0,0},
 				{0,1,0,0},
-			},
+			}
 		}
-	}
+	},
+	{
+		.shape = J,
+		.color = BLUE,
+		.size = 3,
+	},
+	{
+		.shape = L,
+		.color = YELLOW,
+		.size = 3,
+	},
+	{
+		.shape = O,
+		.color = WHITE,
+		.size = 2,
+		.rotates = {
+			{
+				{1,1},
+				{1,1}
+			},
+			{
+				{1,1},
+				{1,1}
+			},
+			{
+				{1,1},
+				{1,1}
+			},
+			{
+				{1,1},
+				{1,1}
+			}
+		}
+	},
+	{
+		.shape = S,
+		.color = GREEN,
+		.size = 3,
+	},
+	{
+		.shape = T,
+		.color = PURPLE,
+		.size = 3,
+	},
+	{
+		.shape = Z,
+		.color = RED,
+		.size = 3,
+	},
 };
+
+// test
 
 int main() {
 	Color cur;
-
-	// 輸出有幾種方塊
-	for (int i = 0; i < 7; i++) {
+	// 有幾種方塊
+	for (int i = 0; i < 1; i++) {
 		// 印出方塊樣式
 		for (int r = 0; r < 4; r++) {
 			for (int s = 0; s < shape[i].size; s++) {
@@ -79,13 +131,12 @@ int main() {
 					else {
 						cur = shape[i].color;
 					}
-					prinf("\033[%dm  \033[0m", cur);
+					printf("\033[%dm  \033[0m", cur);
 				}
 				printf("\n");
-			 }
+			}
 			printf("\n");
 		}
 	}
-
 	return 0;
 }
